@@ -1,5 +1,5 @@
 # Projeto CRUD Delphi
-##Por Gabrielle Clemente.
-##Descrição do Projeto 
-##Descrição do Sistema
-##Entidades Relacionais\
+##Por Gabrielle Clemente. \
+##Descrição do Projeto \
+##Descrição do Sistema \
+##Entidades Relacionais \
