@@ -24,13 +24,13 @@ type
 
     procedure PSairClick(Sender: TObject);
     procedure ListaEnter(Sender: TObject);
-    procedure BtnAddClick(Sender: TObject);
     procedure PExcluirClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure PListarClick(Sender: TObject);
     procedure BtnConfClick(Sender: TObject);
     procedure PIncluirClick(Sender: TObject);
     procedure ListaKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure BtnAddClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -43,7 +43,7 @@ var
 implementation
 
 {$R *.dfm}
-uses UMain2, UEntidades;
+uses UFunçoes,UMain2, UEntidades;
 
 procedure TForm3.FormCreate(Sender: TObject);
 begin
@@ -61,27 +61,13 @@ begin
 end;
 
 procedure TForm3.BtnAddClick(Sender: TObject);
-var
-  novaLinha: Integer;
 begin
-  novaLinha := Lista.RowCount - 1;
-  Lista.RowCount := novaLinha + 1;
-  Lista.Cells[0, novaLinha] := IntToStr(100 + novaLinha); // Código começa em 100
-  Lista.Cells[100, novaLinha] := ''; // Nome
-  Lista.SetFocus;
+AdicionarLinhaGrid(Lista, 100);
 end;
 
 procedure TForm3.BtnConfClick(Sender: TObject);
-var
-  i: Integer;
-  linha: string;
 begin
-  Dados.Items.Clear;
-  for i := 1 to Lista.RowCount - 1 do
-  begin
-    linha := Lista.Cells[0, i] + ' - ' + Lista.Cells[1, i];
-    Dados.Items.Add(linha);
-  end;
+ ConfirmarDadosGridParaListBox(Lista, Dados);
 end;
 
 procedure TForm3.ListaKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
@@ -106,32 +92,18 @@ begin
 end;
 
 procedure TForm3.PExcluirClick(Sender: TObject);
-var
-  Linha, Coluna: Integer;
 begin
-  Linha := Lista.Row;
-  Coluna := Lista.Col;
-  Lista.Cells[Coluna, Linha] := '';
-  Lista.Cells[0, Linha] := '';
-  Lista.Cells[1, Linha] := '';
-
-  if Dados.ItemIndex <> -1 then
-    Dados.Items.Delete(Dados.ItemIndex);
+ ExcluirLinhaGrid(Lista, Dados);
 end;
 
 procedure TForm3.PIncluirClick(Sender: TObject);
 begin
-  Dados.Visible := False;
-  Lista.Visible := True;
-  BtnAdd.Visible := True;
-  BtnConf.Visible := True;
-
+MostrarIncluir(Lista, Dados, BtnAdd, BtnConf);
 end;
 
 procedure TForm3.PListarClick(Sender: TObject);
 begin
-  Lista.Visible := False;
-  Dados.Visible := True;
+MostrarListar(Lista, Dados, BtnAdd, BtnConf);
 end;
 
 procedure TForm3.PSairClick(Sender: TObject);
