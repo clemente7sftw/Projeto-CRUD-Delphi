@@ -1,20 +1,99 @@
-unit UFunçoes;
+unit UFunÃ§oes;
 
 interface
 
 uses
-  Vcl.Grids, Vcl.StdCtrls, System.SysUtils, Vcl.Controls;
+  Vcl.Grids, Vcl.StdCtrls, Vcl.Controls, System.Classes, System.SysUtils;
 
-function AdicionarLinhaGrid(Lista: TStringGrid; CodigoInicial: Integer): Integer;
-procedure ConfirmarDadosGridParaListBox(Lista: TStringGrid; Dados: TListBox);
-procedure ExcluirLinhaGrid(Lista: TStringGrid; Dados: TListBox);
-procedure PrepararGridParaEdicao(Lista: TStringGrid);
-procedure MostrarIncluir(Lista: TStringGrid; Dados: TListBox; BtnAdd, BtnConf: TControl);
-procedure MostrarListar(Lista: TStringGrid; Dados: TListBox; BtnAdd, BtnConf: TControl);
+type
+  TBaseGridManager = class
+  private
+    FLista: TStringGrid;
+    FDados: TListBox;
+    FBtnAdd, FBtnConf: TControl;
+
+    function GetLista: TStringGrid;
+    function GetDados: TListBox;
+    function GetBtnAdd: TControl;
+    function GetBtnConf: TControl;
+
+    procedure SetLista(Value: TStringGrid);
+    procedure SetDados(Value: TListBox);
+    procedure SetBtnAdd(Value: TControl);
+    procedure SetBtnConf(Value: TControl);
+
+  protected
+
+    property Dados: TListBox read GetDados write SetDados;
+    property BtnAdd: TControl read GetBtnAdd write SetBtnAdd;
+    property BtnConf: TControl read GetBtnConf write SetBtnConf;
+
+  public
+   property Lista: TStringGrid read GetLista write SetLista;
+    constructor Create(ALista: TStringGrid; ADados: TListBox; ABtnAdd, ABtnConf: TControl); virtual;
+
+    procedure AdicionarLinha(CodigoInicial: Integer); virtual;
+    procedure ConfirmarDados; virtual;
+    procedure ExcluirLinha; virtual;
+    procedure PrepararGrid; virtual;
+    procedure MostrarIncluir; virtual;
+    procedure MostrarListar; virtual;
+   end;
 
 implementation
 
-function AdicionarLinhaGrid(Lista: TStringGrid; CodigoInicial: Integer): Integer;
+{ TBaseGridManager }
+
+constructor TBaseGridManager.Create(ALista: TStringGrid; ADados: TListBox; ABtnAdd, ABtnConf: TControl);
+begin
+  inherited Create;
+  FLista := ALista;
+  FDados := ADados;
+  FBtnAdd := ABtnAdd;
+  FBtnConf := ABtnConf;
+end;
+
+function TBaseGridManager.GetDados: TListBox;
+begin
+  Result := FDados;
+end;
+
+function TBaseGridManager.GetBtnAdd: TControl;
+begin
+  Result := FBtnAdd;
+end;
+
+function TBaseGridManager.GetBtnConf: TControl;
+begin
+  Result := FBtnConf;
+end;
+
+function TBaseGridManager.GetLista: TStringGrid;
+begin
+  Result := FLista;
+end;
+
+procedure TBaseGridManager.SetDados(Value: TListBox);
+begin
+  FDados := Value;
+end;
+
+procedure TBaseGridManager.SetBtnAdd(Value: TControl);
+begin
+  FBtnAdd := Value;
+end;
+
+procedure TBaseGridManager.SetBtnConf(Value: TControl);
+begin
+  FBtnConf := Value;
+end;
+
+procedure TBaseGridManager.SetLista(Value: TStringGrid);
+begin
+  FLista := Value;
+end;
+
+procedure TBaseGridManager.AdicionarLinha(CodigoInicial: Integer);
 var
   novaLinha: Integer;
 begin
@@ -22,13 +101,12 @@ begin
   Lista.RowCount := novaLinha + 1;
   Lista.Cells[0, novaLinha] := IntToStr(CodigoInicial + novaLinha - 1);
   Lista.Cells[1, novaLinha] := '';
-  Result := novaLinha;
   Lista.Row := novaLinha;
   Lista.Col := 1;
   Lista.SetFocus;
 end;
 
-procedure ConfirmarDadosGridParaListBox(Lista: TStringGrid; Dados: TListBox);
+procedure TBaseGridManager.ConfirmarDados;
 var
   i: Integer;
   linha: string;
@@ -44,7 +122,7 @@ begin
   end;
 end;
 
-procedure ExcluirLinhaGrid(Lista: TStringGrid; Dados: TListBox);
+procedure TBaseGridManager.ExcluirLinha;
 var
   linhaAtual: Integer;
 begin
@@ -52,27 +130,24 @@ begin
   if (linhaAtual > 0) and (linhaAtual < Lista.RowCount) then
   begin
     Lista.Rows[linhaAtual].Clear;
-    // Opcional: pode remover a linha, ou manter vazia
-    // Lista.DeleteRow(linhaAtual); // TStringGrid não tem método DeleteRow nativo
-
-    // Também remove do ListBox se selecionado
     if Dados.ItemIndex <> -1 then
       Dados.Items.Delete(Dados.ItemIndex);
   end;
 end;
 
-procedure PrepararGridParaEdicao(Lista: TStringGrid);
+procedure TBaseGridManager.PrepararGrid;
 begin
   Lista.Options := Lista.Options + [goEditing];
   if Lista.RowCount = 0 then
   begin
-    Lista.RowCount := 2; // pelo menos 1 linha + header
-    Lista.Cells[0, 0] := 'Código';
+    Lista.RowCount := 2;
+    Lista.ColCount := 2;
+    Lista.Cells[0, 0] := 'CÃ³digo';
     Lista.Cells[1, 0] := 'Nome';
   end;
 end;
 
-procedure MostrarIncluir(Lista: TStringGrid; Dados: TListBox; BtnAdd, BtnConf: TControl);
+procedure TBaseGridManager.MostrarIncluir;
 begin
   Dados.Visible := False;
   Lista.Visible := True;
@@ -80,12 +155,13 @@ begin
   BtnConf.Visible := True;
 end;
 
-procedure MostrarListar(Lista: TStringGrid; Dados: TListBox; BtnAdd, BtnConf: TControl);
+procedure TBaseGridManager.MostrarListar;
 begin
   Lista.Visible := False;
   Dados.Visible := True;
   BtnAdd.Visible := False;
   BtnConf.Visible := False;
 end;
+
 
 end.
