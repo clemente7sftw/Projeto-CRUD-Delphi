@@ -22,17 +22,17 @@ type
     BtnConf: TButton;
     Dados: TListBox;
     procedure PSairClick(Sender: TObject);
-    procedure ListaEnter(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure BtnAddClick(Sender: TObject);
-    procedure PIncluirClick(Sender: TObject);
     procedure BtnConfClick(Sender: TObject);
     procedure ListaKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure PExcluirClick(Sender: TObject);
+    procedure PIncluirClick(Sender: TObject);
     procedure PListarClick(Sender: TObject);
     procedure PAtualizarClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
-    FGridManager: TEstudantesGridManager;
+    FGridManager: TEstudantes;
     procedure AtualizarLista;
   public
   end;
@@ -46,117 +46,64 @@ implementation
 
 uses UMain2;
 
-procedure TForm3.BtnAddClick(Sender: TObject);
+procedure TForm3.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  FGridManager.AdicionarLinha(2000);
-end;
-
-
-
-procedure TForm3.BtnConfClick(Sender: TObject);
-var
-  CaminhoArquivo: string;
-  ListaSalvar: TStringList;
-  i: Integer;
-  codigo, nome: string;
-begin
-  try
-    ListaSalvar := TStringList.Create;
-    try
-      for i := 1 to Lista.RowCount - 1 do
-      begin
-        codigo := Trim(Lista.Cells[0, i]);
-        nome := Trim(Lista.Cells[1, i]);
-
-        if (codigo <> '') and (nome <> '') then
-          ListaSalvar.Add(codigo + ' - ' + nome);
-      end;
-
-      CaminhoArquivo := 'C:\Users\gabi\OneDrive\Documents\estudantes.txt';
-
-      ListaSalvar.SaveToFile(CaminhoArquivo);
-
-      ShowMessage('Arquivo salvo com sucesso em: ' + CaminhoArquivo);
-    finally
-      ListaSalvar.Free;
-    end;
-  except
-    on E: Exception do
-      ShowMessage('Erro ao salvar arquivo: ' + E.Message);
-  end;
+  if Assigned(FGridManager) then
+    FGridManager.ConfirmarDados;
 end;
 
 procedure TForm3.FormCreate(Sender: TObject);
 begin
-  FGridManager := TEstudantesGridManager.Create(Lista, Dados, BtnAdd, BtnConf);
-  FGridManager.PrepararGrid;
 
-  Dados.Visible := False;
-  Lista.Visible := False;
-  BtnAdd.Visible := False;
-  BtnConf.Visible := False;
-end;
-
-procedure TForm3.ListaEnter(Sender: TObject);
-begin
+  Lista.Options := Lista.Options + [goRowSelect];
+  Lista.ColCount := 2;
   Lista.Cells[0, 0] := 'Código';
   Lista.Cells[1, 0] := 'Nome';
+  Lista.RowCount := 2;
+
+FGridManager := TEstudantes.Create(Lista, Dados, BtnAdd, BtnConf, 2000);
+FGridManager.CarregarAlunos;
+  FGridManager.MostrarListar;
+  FGridManager.CarregarDados;
+end;
+
+procedure TForm3.BtnAddClick(Sender: TObject);
+begin
+  FGridManager.AdicionarLinha;
+end;
+
+procedure TForm3.BtnConfClick(Sender: TObject);
+begin
+  FGridManager.ConfirmarDados;
+  ShowMessage('Dados salvos com sucesso!');
 end;
 
 procedure TForm3.ListaKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
-  if Key = VK_RETURN then
-  begin
-    Key := 0;
-
-    if Lista.Row < Lista.RowCount - 1 then
-      Lista.Row := Lista.Row + 1
-    else
-    begin
-      Lista.RowCount := Lista.RowCount + 1;
-      Lista.Row := Lista.RowCount - 1;
-      Lista.Cells[0, Lista.Row] := IntToStr(100 + Lista.Row);
-      Lista.Cells[1, Lista.Row] := '';
-    end;
-
-    Lista.Col := 1;
-    Lista.SetFocus;
-  end;
+  FGridManager.TratarEnterParaNovaLinha(Key);
 end;
 
 procedure TForm3.PExcluirClick(Sender: TObject);
 begin
-  try
-    FGridManager.ExcluirLinha;
-    ShowMessage('Linha excluída com sucesso!');
-  except
-    on E: Exception do
-      ShowMessage('Erro ao excluir: ' + E.Message);
-  end;
+  FGridManager.ExcluirAluno;
 end;
 
 procedure TForm3.PIncluirClick(Sender: TObject);
 begin
   FGridManager.MostrarIncluir;
-  BtnAdd.Visible := True;
-  BtnConf.Visible := True;
-  Dados.Visible := False;
-  Lista.Visible := True;
 end;
 
 procedure TForm3.PListarClick(Sender: TObject);
 begin
+
   FGridManager.MostrarListar;
-  BtnAdd.Visible := False;
-  BtnConf.Visible := False;
-  Dados.Visible := True;
-  Lista.Visible := False;
 end;
 
 procedure TForm3.PAtualizarClick(Sender: TObject);
 begin
-  AtualizarLista;
+  FGridManager.CarregarDados;
   ShowMessage('Lista atualizada!');
+  FGridManager.AtualizarDados;
 end;
 
 procedure TForm3.PSairClick(Sender: TObject);
@@ -167,7 +114,7 @@ end;
 
 procedure TForm3.AtualizarLista;
 begin
-  FGridManager.CarregarAlunos;
+  FGridManager.CarregarDados;
 end;
 
 end.
