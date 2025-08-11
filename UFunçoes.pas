@@ -8,6 +8,7 @@ uses
 type
   TFunçoes = class
   private
+
     FArquivo: string;
     FLista: TStringGrid;
     FDados: TListBox;
@@ -24,7 +25,7 @@ type
     procedure SetBtnAdd(Value: TControl);
     procedure SetBtnConf(Value: TControl);
 
-    procedure DeleteGridRow(AGrid: TStringGrid; ARow: Integer); // Método privado para remover linha da grid
+    procedure DeleteGridRow(AGrid: TStringGrid; ARow: Integer);
 
   protected
     property Arquivo: string read FArquivo write FArquivo;
@@ -43,6 +44,7 @@ type
 
     procedure AtualizarDados; virtual;
     procedure AdicionarLinha; virtual;
+    procedure ConfirmarDadosGeral; virtual;
     procedure ConfirmarDados; virtual;
     procedure ExcluirLinha; virtual;
     procedure PrepararGrid; virtual;
@@ -107,47 +109,27 @@ end;
 
 procedure TFunçoes.DeleteGridRow(AGrid: TStringGrid; ARow: Integer);
 var
-  i, j: Integer;
+  i: Integer;
 begin
-  if (ARow <= 0) or (ARow >= AGrid.RowCount) then Exit; // Não remove cabeçalho ou inválidos
+  if (ARow < 0) or (ARow >= AGrid.RowCount) then Exit;
 
   for i := ARow to AGrid.RowCount - 2 do
-    for j := 0 to AGrid.ColCount - 1 do
-      AGrid.Cells[j, i] := AGrid.Cells[j, i + 1];
+    AGrid.Rows[i].Assign(AGrid.Rows[i + 1]);
 
   AGrid.RowCount := AGrid.RowCount - 1;
 end;
 
 function TFunçoes.ProximoCodigo: Integer;
-var
-  maxCodigo, i, cod: Integer;
 begin
-  maxCodigo := CodigoInicial - 1;
-  for i := 1 to Lista.RowCount - 1 do
-  begin
-    cod := StrToIntDef(Lista.Cells[0, i], 0);
-    if cod > maxCodigo then
-      maxCodigo := cod;
-  end;
-  Result := maxCodigo + 1;
 end;
 
 procedure TFunçoes.PreencherCodigoNovaLinha(novaLinha: Integer);
 begin
-  Lista.Cells[0, novaLinha] := IntToStr(ProximoCodigo);
-  Lista.Cells[1, novaLinha] := '';
+
 end;
 
 procedure TFunçoes.AdicionarLinha;
-var
-  novaLinha: Integer;
 begin
-  novaLinha := Lista.RowCount;
-  Lista.RowCount := novaLinha + 1;
-  PreencherCodigoNovaLinha(novaLinha);
-  Lista.Row := novaLinha;
-  Lista.Col := 1;
-  Lista.SetFocus;
 end;
 
 procedure TFunçoes.AtualizarDados;
@@ -158,83 +140,73 @@ begin
 end;
 
 procedure TFunçoes.CarregarDados;
-var
-  ListaCarregar: TStringList;
-  i: Integer;
-  linha, codigo, nome: string;
-  p: Integer;
 begin
-  ListaCarregar := TStringList.Create;
-  try
-    if FileExists(FArquivo) then
-    begin
-      ListaCarregar.LoadFromFile(FArquivo, TEncoding.UTF8);
-      Lista.RowCount := ListaCarregar.Count + 1;
-      for i := 0 to ListaCarregar.Count - 1 do
-      begin
-        linha := ListaCarregar[i];
-        p := Pos(' - ', linha);
-        if p > 0 then
-        begin
-          codigo := Copy(linha, 1, p - 1);
-          nome := Copy(linha, p + 3, Length(linha));
-          Lista.Cells[0, i + 1] := codigo;
-          Lista.Cells[1, i + 1] := nome;
-        end;
-      end;
-    end else
-      Lista.RowCount := 1; // limpa grid se arquivo não existe
-  finally
-    ListaCarregar.Free;
-  end;
+
 end;
 
 procedure TFunçoes.ConfirmarDados;
 var
   i: Integer;
   linha: string;
-  ListaSalvar: TStringList;
 begin
   Dados.Items.Clear;
+
   for i := 1 to Lista.RowCount - 1 do
   begin
     if (Trim(Lista.Cells[0, i]) <> '') and (Trim(Lista.Cells[1, i]) <> '') then
     begin
-      linha := Lista.Cells[0, i] + ' - ' + Lista.Cells[1, i];
+      linha := Lista.Cells[0, i] + ' - ' + Lista.Cells[1, i] ;
       Dados.Items.Add(linha);
     end;
   end;
+end;
 
-  ListaSalvar := TStringList.Create;
-  try
-    ListaSalvar.Assign(Dados.Items);
-    ListaSalvar.SaveToFile(FArquivo, TEncoding.UTF8);
-  finally
-    ListaSalvar.Free;
+procedure TFunçoes.ConfirmarDadosGeral;
+var
+  i: Integer;
+  linha: string;
+begin
+  Dados.Items.Clear;
+
+  for i := 1 to Lista.RowCount - 1 do
+  begin
+    if (Trim(Lista.Cells[0, i]) <> '') and (Trim(Lista.Cells[1, i]) <> '') then
+    begin
+      linha := Lista.Cells[0, i] + ' - ' + Lista.Cells[1, i]+ ' - ' + Lista.Cells[2, i] ;
+      Dados.Items.Add(linha);
+    end;
   end;
 end;
 
+
 procedure TFunçoes.ExcluirLinha;
 var
-  linhaAtual: Integer;
+  DadoUN: Integer;
+  i, j: Integer;
 begin
-  linhaAtual := Lista.Row;
-  if (linhaAtual > 0) and (linhaAtual < Lista.RowCount) then
+  DadoUN := Dados.ItemIndex;
+
+  if DadoUN <> -1 then
   begin
-    DeleteGridRow(Lista, linhaAtual);
 
-    if Dados.ItemIndex <> -1 then
-      Dados.Items.Delete(Dados.ItemIndex);
+    Dados.Items.Delete(DadoUN);
+    if (DadoUN + 1) < Lista.RowCount then
+    begin
 
-    ConfirmarDados;
+      for i := DadoUN + 1 to Lista.RowCount - 2 do
+        for j := 0 to Lista.ColCount - 1 do
+          Lista.Cells[j, i] := Lista.Cells[j, i + 1];
+
+      Lista.RowCount := Lista.RowCount - 1;
+    end;
   end
   else
-    ShowMessage('Selecione uma linha válida para excluir.');
+    ShowMessage('Selecione um item para deletar.');
 end;
 
 procedure TFunçoes.PrepararGrid;
 begin
-  Lista.Options := Lista.Options + [goEditing, goRowSelect];
+
 end;
 
 procedure TFunçoes.MostrarIncluir;
