@@ -22,17 +22,16 @@ type
     BtnConf: TButton;
     Dados: TListBox;
     procedure PSairClick(Sender: TObject);
+    procedure ListaEnter(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure BtnAddClick(Sender: TObject);
-    procedure BtnConfClick(Sender: TObject);
+    procedure PIncluirClick(Sender: TObject);
     procedure ListaKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure PExcluirClick(Sender: TObject);
-    procedure PIncluirClick(Sender: TObject);
     procedure PListarClick(Sender: TObject);
-    procedure PAtualizarClick(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure BtnConfClick(Sender: TObject);
+
   private
-    FGridManager: TEstudantes;
+    var Estudantes:TEstudantes;
     procedure AtualizarLista;
   public
   end;
@@ -46,64 +45,59 @@ implementation
 
 uses UMain2;
 
-procedure TForm3.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TForm3.BtnConfClick(Sender: TObject);
 begin
-  if Assigned(FGridManager) then
-    FGridManager.ConfirmarDados;
+  Estudantes.ConfirmarDados;
+  Estudantes.Salvar;
+
 end;
 
 procedure TForm3.FormCreate(Sender: TObject);
 begin
+  Estudantes := TEstudantes.Create(Lista, Dados, BtnAdd, BtnConf, 2000);
 
-  Lista.Options := Lista.Options + [goRowSelect];
-  Lista.ColCount := 2;
+end;
+
+procedure TForm3.ListaEnter(Sender: TObject);
+begin
   Lista.Cells[0, 0] := 'Código';
   Lista.Cells[1, 0] := 'Nome';
-  Lista.RowCount := 2;
-
-FGridManager := TEstudantes.Create(Lista, Dados, BtnAdd, BtnConf, 2000);
-FGridManager.CarregarAlunos;
-  FGridManager.MostrarListar;
-  FGridManager.CarregarDados;
-end;
-
-procedure TForm3.BtnAddClick(Sender: TObject);
-begin
-  FGridManager.AdicionarLinha;
-end;
-
-procedure TForm3.BtnConfClick(Sender: TObject);
-begin
-  FGridManager.ConfirmarDados;
-  ShowMessage('Dados salvos com sucesso!');
 end;
 
 procedure TForm3.ListaKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
-  FGridManager.TratarEnterParaNovaLinha(Key);
+  if Key = VK_RETURN then
+  begin
+    Key := 0;
+
+    if Lista.Row < Lista.RowCount - 1 then
+      Lista.Row := Lista.Row + 1
+    else
+    begin
+      Lista.RowCount := Lista.RowCount + 1;
+      Lista.Row := Lista.RowCount - 1;
+      Lista.Cells[0, Lista.Row] := IntToStr(100 + Lista.Row);
+      Lista.Cells[1, Lista.Row] := '';
+    end;
+
+    Lista.Col := 1;
+    Lista.SetFocus;
+  end;
 end;
 
 procedure TForm3.PExcluirClick(Sender: TObject);
 begin
-  FGridManager.ExcluirAluno;
+ Estudantes.ExcluirLinha;
 end;
 
 procedure TForm3.PIncluirClick(Sender: TObject);
 begin
-  FGridManager.MostrarIncluir;
+ Estudantes.MostrarIncluir;
 end;
 
 procedure TForm3.PListarClick(Sender: TObject);
 begin
-
-  FGridManager.MostrarListar;
-end;
-
-procedure TForm3.PAtualizarClick(Sender: TObject);
-begin
-  FGridManager.CarregarDados;
-  ShowMessage('Lista atualizada!');
-  FGridManager.AtualizarDados;
+  Estudantes.MostrarListar;
 end;
 
 procedure TForm3.PSairClick(Sender: TObject);
@@ -114,7 +108,7 @@ end;
 
 procedure TForm3.AtualizarLista;
 begin
-  FGridManager.CarregarDados;
+  Estudantes.CarregarAlunos;
 end;
 
 end.
