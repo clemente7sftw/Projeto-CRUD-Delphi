@@ -16,7 +16,6 @@ type
     PListar: TPanel;
     PExcluir: TPanel;
     PSair: TPanel;
-    PAtualizar: TPanel;
     MsgEnt: TLabel;
     BtnAdd: TButton;
     BtnConf: TButton;
@@ -29,6 +28,7 @@ type
     procedure PExcluirClick(Sender: TObject);
     procedure PListarClick(Sender: TObject);
     procedure BtnConfClick(Sender: TObject);
+
 
   private
     var Estudantes:TEstudantes;
@@ -55,7 +55,7 @@ end;
 procedure TForm3.FormCreate(Sender: TObject);
 begin
   Estudantes := TEstudantes.Create(Lista, Dados, BtnAdd, BtnConf, 2000);
-
+  Estudantes.CarregarAlunos;
 end;
 
 procedure TForm3.ListaEnter(Sender: TObject);
@@ -76,11 +76,7 @@ begin
     begin
       Lista.RowCount := Lista.RowCount + 1;
       Lista.Row := Lista.RowCount - 1;
-<<<<<<< HEAD
       Lista.Cells[0, Lista.Row] := IntToStr(2000 + Lista.Row);
-=======
-      Lista.Cells[0, Lista.Row] := IntToStr(100 + Lista.Row);
->>>>>>> 12763858243fefdf2900cc6a6ed7af18491ddf6e
       Lista.Cells[1, Lista.Row] := '';
     end;
 
@@ -89,6 +85,8 @@ begin
   end;
 end;
 
+
+
 procedure TForm3.PExcluirClick(Sender: TObject);
 begin
  Estudantes.ExcluirLinha;
@@ -96,6 +94,7 @@ end;
 
 procedure TForm3.PIncluirClick(Sender: TObject);
 begin
+
  Estudantes.MostrarIncluir;
 end;
 

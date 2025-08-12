@@ -4199,13 +4199,13 @@ object Form3: TForm3
     Left = 0
     Top = -25
     Width = 185
-    Height = 561
+    Height = 1086
     Color = clBtnHighlight
     ParentBackground = False
     TabOrder = 0
     object PIncluir: TPanel
       Left = 24
-      Top = 64
+      Top = 133
       Width = 113
       Height = 41
       Caption = 'Incluir'
@@ -4214,7 +4214,7 @@ object Form3: TForm3
     end
     object PListar: TPanel
       Left = 24
-      Top = 144
+      Top = 352
       Width = 113
       Height = 41
       Caption = 'Listar'
@@ -4223,7 +4223,7 @@ object Form3: TForm3
     end
     object PExcluir: TPanel
       Left = 24
-      Top = 321
+      Top = 568
       Width = 113
       Height = 41
       Caption = 'Excluir'
@@ -4232,20 +4232,12 @@ object Form3: TForm3
     end
     object PSair: TPanel
       Left = 24
-      Top = 424
+      Top = 792
       Width = 113
       Height = 41
       Caption = 'Sair'
       TabOrder = 3
       OnClick = PSairClick
-    end
-    object PAtualizar: TPanel
-      Left = 24
-      Top = 232
-      Width = 113
-      Height = 41
-      Caption = 'Atualizar'
-      TabOrder = 4
     end
   end
   object Lista: TStringGrid

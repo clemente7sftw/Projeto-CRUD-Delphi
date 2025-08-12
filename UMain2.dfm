@@ -4182,16 +4182,13 @@ object Form2: TForm2
       C9D93B2764EC9D93B2764EC9D93B276471F41249244B7A37674CDEFAD24927FF
       D9}
     Stretch = True
-    ExplicitLeft = 392
-    ExplicitTop = 328
-    ExplicitWidth = 105
-    ExplicitHeight = 105
+    ExplicitTop = 8
   end
   object Menu: TPanel
     Left = 0
     Top = 0
     Width = 185
-    Height = 993
+    Height = 1061
     Color = clBtnHighlight
     ParentBackground = False
     TabOrder = 0

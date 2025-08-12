@@ -2,8 +2,8 @@ object Form5: TForm5
   Left = 0
   Top = 0
   Caption = 'Form5'
-  ClientHeight = 536
-  ClientWidth = 884
+  ClientHeight = 1061
+  ClientWidth = 1184
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,8 +15,8 @@ object Form5: TForm5
   object Image1: TImage
     Left = 0
     Top = 0
-    Width = 884
-    Height = 536
+    Width = 1184
+    Height = 1061
     Align = alClient
     Picture.Data = {
       0A544A504547496D61676532080200FFD8FFDB0043000D0D0D0D0E0D0E10100E
@@ -4186,6 +4186,7 @@ object Form5: TForm5
     ExplicitLeft = -231
     ExplicitTop = -95
     ExplicitWidth = 855
+    ExplicitHeight = 536
   end
   object MsgEnt: TLabel
     Left = 504
@@ -4211,7 +4212,7 @@ object Form5: TForm5
     Left = 0
     Top = -32
     Width = 185
-    Height = 656
+    Height = 1093
     Color = clBtnHighlight
     ParentBackground = False
     TabOrder = 1
@@ -4226,7 +4227,7 @@ object Form5: TForm5
     end
     object PListar: TPanel
       Left = 24
-      Top = 144
+      Top = 352
       Width = 113
       Height = 41
       Caption = 'Listar'
@@ -4235,7 +4236,7 @@ object Form5: TForm5
     end
     object PExcluir: TPanel
       Left = 24
-      Top = 321
+      Top = 641
       Width = 113
       Height = 41
       Caption = 'Excluir'
@@ -4244,7 +4245,7 @@ object Form5: TForm5
     end
     object PSair: TPanel
       Left = 24
-      Top = 424
+      Top = 920
       Width = 113
       Height = 41
       Caption = 'Sair'

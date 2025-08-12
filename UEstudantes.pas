@@ -36,7 +36,36 @@ begin
 end;
 
 procedure TEstudantes.CarregarAlunos;
+var
+  ListaCarregar: TStringList;
+  i: Integer;
+  linha, codigo, nome: string;
+  p: Integer;
 begin
+ var CaminhoArquivo := 'C:\Users\gabri\OneDrive\Documentos\estudantes.txt';
+  ListaCarregar := TStringList.Create;
+  try
+    if FileExists(CaminhoArquivo) then
+    begin
+      ListaCarregar.LoadFromFile(CaminhoArquivo, TEncoding.UTF8);
+      Lista.RowCount := ListaCarregar.Count + 1;
+      for i := 0 to ListaCarregar.Count - 1 do
+      begin
+        linha := ListaCarregar[i];
+        p := Pos(' - ', linha);
+        if p > 0 then
+        begin
+          codigo := Copy(linha, 1, p - 1);
+          nome := Copy(linha, p + 3, Length(linha));
+          Lista.Cells[0, i + 1] := codigo;
+          Lista.Cells[1, i + 1] := nome;
+        end;
+      end;
+    end else
+      Lista.RowCount := 1;
+  finally
+    ListaCarregar.Free;
+  end;
 end;
 
 procedure TEstudantes.Salvar;

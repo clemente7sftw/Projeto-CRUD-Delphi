@@ -50,7 +50,8 @@ type
     procedure PrepararGrid; virtual;
     procedure MostrarIncluir; virtual;
     procedure MostrarListar; virtual;
-    procedure CarregarDados; virtual;
+
+    procedure ValidarCPF; virtual;
     procedure TratarEnterParaNovaLinha(Key: Word); virtual;
   end;
 
@@ -64,7 +65,6 @@ begin
   FBtnAdd := ABtnAdd;
   FBtnConf := ABtnConf;
   FCodigoInicial := ALimite;
-  FArquivo := AArquivo;
 end;
 
 function TFunçoes.GetDados: TListBox;
@@ -135,14 +135,10 @@ end;
 procedure TFunçoes.AtualizarDados;
 begin
   Lista.RowCount := 1;
-  CarregarDados;
   MostrarListar;
 end;
 
-procedure TFunçoes.CarregarDados;
-begin
 
-end;
 
 procedure TFunçoes.ConfirmarDados;
 var
@@ -168,9 +164,9 @@ var
 begin
   Dados.Items.Clear;
 
-  for i := 1 to Lista.RowCount - 1 do
+  for i := 2 to Lista.RowCount - 1 do
   begin
-    if (Trim(Lista.Cells[0, i]) <> '') and (Trim(Lista.Cells[1, i]) <> '') then
+    if (Trim(Lista.Cells[0, i]) <> '') and (Trim(Lista.Cells[1, i]) <> '')  and (Trim(Lista.Cells[2, i]) <> '') then
     begin
       linha := Lista.Cells[0, i] + ' - ' + Lista.Cells[1, i]+ ' - ' + Lista.Cells[2, i] ;
       Dados.Items.Add(linha);
@@ -230,13 +226,27 @@ begin
   if Key = VK_RETURN then
   begin
     Key := 0;
-    if Lista.Row < Lista.RowCount - 1 then
-      Lista.Row := Lista.Row + 1
+    if Lista.Col < Lista.ColCount - 1 then
+    begin
+      Lista.Col := Lista.Col + 1;
+    end
     else
-      AdicionarLinha;
-    Lista.Col := 1;
+    begin
+      if Lista.Row < Lista.RowCount - 1 then
+        Lista.Row := Lista.Row + 1
+      else
+        AdicionarLinha;
+
+      Lista.Col := 0;
+    end;
+
     Lista.SetFocus;
   end;
+end;
+
+procedure TFunçoes.ValidarCPF;
+begin
+
 end;
 
 end.

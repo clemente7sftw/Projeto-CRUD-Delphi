@@ -2,8 +2,8 @@ object Form4: TForm4
   Left = 0
   Top = 0
   Caption = 'Form4'
-  ClientHeight = 536
-  ClientWidth = 884
+  ClientHeight = 1061
+  ClientWidth = 1184
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,8 +15,8 @@ object Form4: TForm4
   object Image1: TImage
     Left = 0
     Top = 0
-    Width = 884
-    Height = 536
+    Width = 1184
+    Height = 1061
     Align = alClient
     Picture.Data = {
       0A544A504547496D61676532080200FFD8FFDB0043000D0D0D0D0E0D0E10100E
@@ -4186,6 +4186,7 @@ object Form4: TForm4
     ExplicitLeft = -231
     ExplicitTop = -95
     ExplicitWidth = 855
+    ExplicitHeight = 536
   end
   object MsgEnt: TLabel
     Left = 504
@@ -4211,7 +4212,7 @@ object Form4: TForm4
     Left = 0
     Top = -24
     Width = 185
-    Height = 575
+    Height = 1085
     Color = clBtnHighlight
     ParentBackground = False
     TabOrder = 1
@@ -4250,14 +4251,6 @@ object Form4: TForm4
       Caption = 'Sair'
       TabOrder = 3
       OnClick = PSairClick
-    end
-    object PAtualizar: TPanel
-      Left = 24
-      Top = 232
-      Width = 113
-      Height = 41
-      Caption = 'Atualizar'
-      TabOrder = 4
     end
   end
   object BtnConf: TButton

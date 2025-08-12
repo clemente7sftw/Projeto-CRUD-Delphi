@@ -16,7 +16,6 @@ type
     PListar: TPanel;
     PExcluir: TPanel;
     PSair: TPanel;
-    PAtualizar: TPanel;
     MsgEnt: TLabel;
     BtnAdd: TButton;
     BtnConf: TButton;
@@ -52,20 +51,15 @@ end;
 
 procedure TForm6.FormCreate(Sender: TObject);
 begin
-Turmas := TTurmas.Create(Lista, Dados, BtnAdd, BtnConf);
+  Turmas := TTurmas.Create(Lista, Dados, BtnAdd, BtnConf);
+  Turmas.CarregarTurmas;
 end;
 
 procedure TForm6.ListaEnter(Sender: TObject);
 begin
-<<<<<<< HEAD
     Lista.Cells[0,0]:= 'Código';
     Lista.Cells[1,0]:= 'Código Professor';
     Lista.Cells[2,0]:= 'Código Disciplina';
-=======
-    Lista.Cells[0,0]:= 'CÃ³digo';
-    Lista.Cells[1,0]:= 'CÃ³digo Professor';
-    Lista.Cells[2,0]:= 'CÃ³digo Disciplina';
->>>>>>> 12763858243fefdf2900cc6a6ed7af18491ddf6e
 end;
 
 procedure TForm6.ListaKeyDown(Sender: TObject; var Key: Word;
@@ -81,11 +75,7 @@ begin
     begin
       Lista.RowCount := Lista.RowCount + 1;
       Lista.Row := Lista.RowCount - 1;
-<<<<<<< HEAD
       Lista.Cells[0, Lista.Row] := IntToStr(200 + Lista.Row);
-=======
-      Lista.Cells[0, Lista.Row] := IntToStr(100 + Lista.Row);
->>>>>>> 12763858243fefdf2900cc6a6ed7af18491ddf6e
       Lista.Cells[1, Lista.Row] := '';
       Lista.Cells[2, Lista.Row] := '';
     end;
