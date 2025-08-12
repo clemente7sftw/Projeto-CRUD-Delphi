@@ -76,7 +76,11 @@ begin
     begin
       Lista.RowCount := Lista.RowCount + 1;
       Lista.Row := Lista.RowCount - 1;
+<<<<<<< HEAD
       Lista.Cells[0, Lista.Row] := IntToStr(2000 + Lista.Row);
+=======
+      Lista.Cells[0, Lista.Row] := IntToStr(100 + Lista.Row);
+>>>>>>> 12763858243fefdf2900cc6a6ed7af18491ddf6e
       Lista.Cells[1, Lista.Row] := '';
     end;
 

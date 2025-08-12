@@ -58,7 +58,7 @@ end;
 
 procedure TForm4.ListaEnter(Sender: TObject);
 begin
-    Lista.Cells[0,0]:= 'Código';
+    Lista.Cells[0,0]:= 'CÃ³digo';
     Lista.Cells[1,0]:= 'Nome';
     Lista.Cells[2,0]:= 'CPF';
 end;
@@ -76,7 +76,11 @@ begin
     begin
       Lista.RowCount := Lista.RowCount + 1;
       Lista.Row := Lista.RowCount - 1;
+<<<<<<< HEAD
       Lista.Cells[0, Lista.Row] := IntToStr(50 + Lista.Row);
+=======
+      Lista.Cells[0, Lista.Row] := IntToStr(100 + Lista.Row);
+>>>>>>> 12763858243fefdf2900cc6a6ed7af18491ddf6e
       Lista.Cells[1, Lista.Row] := '';
       Lista.Cells[2, Lista.Row] := '';
     end;
