@@ -9,7 +9,11 @@ uses
   UMenu5 in 'UMenu5.pas' {Form5},
   UMenu6 in 'UMenu6.pas' {Form6},
   Umenu7 in 'Umenu7.pas' {Form7},
-  UEntidades in 'UEntidades.pas';
+  UEntidades in 'UEntidades.pas',
+  UProfessores in 'UProfessores.pas',
+  UDisciplinas in 'UDisciplinas.pas',
+  UTurmas in 'UTurmas.pas',
+  UMatriculas in 'UMatriculas.pas';
 
 {$R *.res}
 

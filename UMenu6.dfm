@@ -10,6 +10,7 @@ object Form6: TForm6
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  OnCreate = FormCreate
   TextHeight = 15
   object Image1: TImage
     Left = 0
@@ -4199,11 +4200,13 @@ object Form6: TForm6
     Top = 112
     Width = 337
     Height = 281
-    ColCount = 2
+    ColCount = 3
     FixedCols = 0
     RowCount = 2
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing, goFixedRowDefAlign]
     TabOrder = 0
     OnEnter = ListaEnter
+    OnKeyDown = ListaKeyDown
   end
   object Menu: TPanel
     Left = 0
@@ -4220,6 +4223,7 @@ object Form6: TForm6
       Height = 41
       Caption = 'Incluir'
       TabOrder = 0
+      OnClick = PIncluirClick
     end
     object PListar: TPanel
       Left = 24
@@ -4228,6 +4232,7 @@ object Form6: TForm6
       Height = 41
       Caption = 'Listar'
       TabOrder = 1
+      OnClick = PListarClick
     end
     object PExcluir: TPanel
       Left = 24
@@ -4236,6 +4241,7 @@ object Form6: TForm6
       Height = 41
       Caption = 'Excluir'
       TabOrder = 2
+      OnClick = PExcluirClick
     end
     object PSair: TPanel
       Left = 24
@@ -4254,5 +4260,30 @@ object Form6: TForm6
       Caption = 'Atualizar'
       TabOrder = 4
     end
+  end
+  object BtnAdd: TButton
+    Left = 359
+    Top = 406
+    Width = 75
+    Height = 25
+    Caption = 'Adicionar'
+    TabOrder = 2
+  end
+  object BtnConf: TButton
+    Left = 622
+    Top = 406
+    Width = 75
+    Height = 25
+    Caption = 'Confirmar'
+    TabOrder = 3
+    OnClick = BtnConfClick
+  end
+  object Dados: TListBox
+    Left = 359
+    Top = 112
+    Width = 337
+    Height = 280
+    ItemHeight = 15
+    TabOrder = 4
   end
 end

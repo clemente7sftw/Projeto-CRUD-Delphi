@@ -2,8 +2,8 @@ object Form2: TForm2
   Left = 0
   Top = 0
   Caption = 'Form2'
-  ClientHeight = 553
-  ClientWidth = 872
+  ClientHeight = 1061
+  ClientWidth = 1532
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,8 +14,8 @@ object Form2: TForm2
   object Image1: TImage
     Left = 0
     Top = 0
-    Width = 872
-    Height = 553
+    Width = 1532
+    Height = 1061
     Align = alClient
     Picture.Data = {
       0A544A504547496D61676532080200FFD8FFDB0043000D0D0D0D0E0D0E10100E
@@ -4191,7 +4191,7 @@ object Form2: TForm2
     Left = 0
     Top = 0
     Width = 185
-    Height = 553
+    Height = 993
     Color = clBtnHighlight
     ParentBackground = False
     TabOrder = 0
@@ -4206,7 +4206,7 @@ object Form2: TForm2
     end
     object PProfessores: TPanel
       Left = 24
-      Top = 136
+      Top = 224
       Width = 113
       Height = 41
       Caption = 'Professores'
@@ -4215,7 +4215,7 @@ object Form2: TForm2
     end
     object PDisciplinas: TPanel
       Left = 24
-      Top = 232
+      Top = 392
       Width = 113
       Height = 41
       Caption = 'Disciplinas'
@@ -4224,7 +4224,7 @@ object Form2: TForm2
     end
     object PTurmas: TPanel
       Left = 24
-      Top = 321
+      Top = 553
       Width = 113
       Height = 41
       Caption = 'Turmas'
@@ -4233,7 +4233,7 @@ object Form2: TForm2
     end
     object PMatriculas: TPanel
       Left = 24
-      Top = 424
+      Top = 752
       Width = 113
       Height = 41
       Caption = 'Matr'#237'culas'

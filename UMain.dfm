@@ -4182,10 +4182,7 @@
       C9D93B2764EC9D93B2764EC9D93B276471F41249244B7A37674CDEFAD24927FF
       D9}
     Stretch = True
-    ExplicitLeft = 464
-    ExplicitTop = 288
-    ExplicitWidth = 105
-    ExplicitHeight = 105
+    ExplicitLeft = 8
   end
   object FormLogin: TPanel
     AlignWithMargins = True
@@ -4201,13 +4198,14 @@
     Color = clBtnHighlight
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 682
-    ExplicitHeight = 453
     object MsgLogin: TLabel
       Left = 312
       Top = 16
-      Width = 62
-      Height = 31
+      Width = 73
+      Height = 53
+      Margins.Left = 100
+      Margins.Right = 100
+      Margins.Bottom = 400
       Caption = 'Login'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText

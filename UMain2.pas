@@ -41,7 +41,6 @@ implementation
 procedure TForm2.PDisciplinasClick(Sender: TObject);
 begin
     Form5 := TForm5.Create(Self);
-    Form5.Align := alClient;
     Form5.Show;
 end;
 

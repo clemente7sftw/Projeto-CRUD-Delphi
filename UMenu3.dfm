@@ -2,20 +2,21 @@ object Form3: TForm3
   Left = 0
   Top = 0
   Caption = 'Form3'
-  ClientHeight = 534
-  ClientWidth = 884
+  ClientHeight = 1061
+  ClientWidth = 1184
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  OnCreate = FormCreate
   TextHeight = 15
   object Image1: TImage
     Left = 0
     Top = 0
-    Width = 884
-    Height = 534
+    Width = 1184
+    Height = 1061
     Align = alClient
     Picture.Data = {
       0A544A504547496D61676532080200FFD8FFDB0043000D0D0D0D0E0D0E10100E
@@ -4209,6 +4210,7 @@ object Form3: TForm3
       Height = 41
       Caption = 'Incluir'
       TabOrder = 0
+      OnClick = PIncluirClick
     end
     object PListar: TPanel
       Left = 24
@@ -4217,6 +4219,7 @@ object Form3: TForm3
       Height = 41
       Caption = 'Listar'
       TabOrder = 1
+      OnClick = PListarClick
     end
     object PExcluir: TPanel
       Left = 24
@@ -4225,6 +4228,7 @@ object Form3: TForm3
       Height = 41
       Caption = 'Excluir'
       TabOrder = 2
+      OnClick = PExcluirClick
     end
     object PSair: TPanel
       Left = 24
@@ -4255,6 +4259,31 @@ object Form3: TForm3
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing, goFixedRowDefAlign]
     TabOrder = 1
     OnEnter = ListaEnter
-    OnKeyPress = ListaKeyPress
+    OnKeyDown = ListaKeyDown
+  end
+  object BtnAdd: TButton
+    Left = 360
+    Top = 406
+    Width = 75
+    Height = 25
+    Caption = 'Adicionar'
+    TabOrder = 2
+  end
+  object BtnConf: TButton
+    Left = 622
+    Top = 406
+    Width = 75
+    Height = 25
+    Caption = 'Confirmar'
+    TabOrder = 3
+    OnClick = BtnConfClick
+  end
+  object Dados: TListBox
+    Left = 360
+    Top = 119
+    Width = 337
+    Height = 281
+    ItemHeight = 15
+    TabOrder = 4
   end
 end
