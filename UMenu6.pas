@@ -20,6 +20,10 @@ type
     BtnAdd: TButton;
     BtnConf: TButton;
     Dados: TListBox;
+    Fundo: TPanel;
+    ComboBox2: TComboBox;
+    BtnCBAdd: TButton;
+    ComboBox1: TComboBox;
     procedure PSairClick(Sender: TObject);
     procedure ListaEnter(Sender: TObject);
     procedure ListaKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);

@@ -4278,4 +4278,37 @@ object Form6: TForm6
     ItemHeight = 15
     TabOrder = 4
   end
+  object Fundo: TPanel
+    Left = 944
+    Top = 114
+    Width = 225
+    Height = 280
+    Color = clBtnHighlight
+    ParentBackground = False
+    TabOrder = 5
+    object ComboBox2: TComboBox
+      Left = 48
+      Top = 184
+      Width = 145
+      Height = 23
+      TabOrder = 0
+      Text = 'ComboBox2'
+    end
+    object BtnCBAdd: TButton
+      Left = 80
+      Top = 240
+      Width = 75
+      Height = 25
+      Caption = 'Adicionar'
+      TabOrder = 1
+    end
+    object ComboBox1: TComboBox
+      Left = 48
+      Top = 115
+      Width = 145
+      Height = 23
+      TabOrder = 2
+      Text = 'ComboBox1'
+    end
+  end
 end

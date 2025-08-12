@@ -3,7 +3,7 @@ object Form7: TForm7
   Top = 0
   Caption = 'Form7'
   ClientHeight = 1061
-  ClientWidth = 1184
+  ClientWidth = 1208
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,7 +15,7 @@ object Form7: TForm7
   object Image1: TImage
     Left = 0
     Top = 0
-    Width = 1184
+    Width = 1208
     Height = 1061
     Align = alClient
     Picture.Data = {
@@ -4184,8 +4184,7 @@ object Form7: TForm7
       D9}
     Stretch = True
     ExplicitLeft = 8
-    ExplicitWidth = 624
-    ExplicitHeight = 441
+    ExplicitWidth = 1196
   end
   object MsgEnt: TLabel
     Left = 504
@@ -4276,5 +4275,38 @@ object Form7: TForm7
     Height = 280
     ItemHeight = 15
     TabOrder = 4
+  end
+  object Fundo: TPanel
+    Left = 944
+    Top = 114
+    Width = 225
+    Height = 280
+    Color = clBtnHighlight
+    ParentBackground = False
+    TabOrder = 5
+    object ComboBox2: TComboBox
+      Left = 48
+      Top = 184
+      Width = 145
+      Height = 23
+      TabOrder = 0
+      Text = 'ComboBox2'
+    end
+    object BtnCBAdd: TButton
+      Left = 80
+      Top = 240
+      Width = 75
+      Height = 25
+      Caption = 'Adicionar'
+      TabOrder = 1
+    end
+    object ComboBox1: TComboBox
+      Left = 48
+      Top = 115
+      Width = 145
+      Height = 23
+      TabOrder = 2
+      Text = 'ComboBox1'
+    end
   end
 end
