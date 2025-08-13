@@ -8,8 +8,6 @@ uses
   UMenu4 in 'UMenu4.pas' {Form4},
   UMenu5 in 'UMenu5.pas' {Form5},
   UMenu6 in 'UMenu6.pas' {Form6},
-  Umenu7 in 'Umenu7.pas' {Form7},
-  UEntidades in 'UEntidades.pas',
   UProfessores in 'UProfessores.pas',
   UDisciplinas in 'UDisciplinas.pas',
   UTurmas in 'UTurmas.pas',
@@ -26,6 +24,5 @@ begin
   Application.CreateForm(TForm4, Form4);
   Application.CreateForm(TForm5, Form5);
   Application.CreateForm(TForm6, Form6);
-  Application.CreateForm(TForm7, Form7);
   Application.Run;
 end.

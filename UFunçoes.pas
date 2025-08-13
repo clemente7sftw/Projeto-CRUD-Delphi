@@ -46,13 +46,10 @@ type
     procedure AdicionarLinha; virtual;
     procedure ConfirmarDadosGeral; virtual;
     procedure ConfirmarDados; virtual;
-    procedure ExcluirLinha; virtual;
-    procedure PrepararGrid; virtual;
     procedure MostrarIncluir; virtual;
     procedure MostrarListar; virtual;
     function Buscar(const TextoBusca: string): Integer; virtual;
-
-    procedure ValidarCPF; virtual;
+    procedure ExcluirLinha;
     procedure TratarEnterParaNovaLinha(Key: Word); virtual;
   end;
 
@@ -118,6 +115,11 @@ begin
     AGrid.Rows[i].Assign(AGrid.Rows[i + 1]);
 
   AGrid.RowCount := AGrid.RowCount - 1;
+end;
+
+procedure TFunçoes.ExcluirLinha;
+begin
+
 end;
 
 function TFunçoes.ProximoCodigo: Integer;
@@ -196,14 +198,6 @@ begin
 end;
 
 
-procedure TFunçoes.ExcluirLinha;
-begin
-end;
-
-procedure TFunçoes.PrepararGrid;
-begin
-
-end;
 
 procedure TFunçoes.MostrarIncluir;
 begin
@@ -245,9 +239,5 @@ begin
   end;
 end;
 
-procedure TFunçoes.ValidarCPF;
-begin
-
-end;
 
 end.

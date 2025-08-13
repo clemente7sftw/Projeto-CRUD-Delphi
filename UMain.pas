@@ -3,9 +3,9 @@ unit UMain;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls,UMain2, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.jpeg, Vcl.ExtCtrls,
-  Vcl.StdCtrls;
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
+  Vcl.Graphics, Vcl.Controls, UMain2, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.jpeg,
+  Vcl.ExtCtrls, Vcl.StdCtrls;
 
 type
   TForm1 = class(TForm)
@@ -21,40 +21,44 @@ type
   private
     { Private declarations }
   public
-
+    { Public declarations }
   end;
 
 var
   Form1: TForm1;
-  UserCorreto, User: String;
+  UserCorreto, User: string;
   SenhaCorreta, Senha: Integer;
 
 implementation
-procedure LoginValido;
-begin
-UserCorreto := 'Admin';
-SenhaCorreta :=  1234;
-end;
 
 {$R *.dfm}
+
+procedure LoginValido;
+begin
+  UserCorreto := 'Admin';
+  SenhaCorreta := 1234;
+end;
 
 procedure TForm1.BotãoClick(Sender: TObject);
 begin
   LoginValido;
   User := InptUser.Text;
   Senha := StrToInt(InptSenha.Text);
-  if ((UserCorreto = User) and (SenhaCorreta = Senha )) then begin
+  if (UserCorreto = User) and (SenhaCorreta = Senha) then
+  begin
     ShowMessage('Acesso Permitido');
     Form2 := TForm2.Create(Self);
     Form2.Align := alClient;
     Form2.Show;
-  end else
-  ShowMessage ('Acesso Negado.')
+  end
+  else
+    ShowMessage('Acesso Negado.');
 end;
 
 procedure TForm1.InptSenhaChange(Sender: TObject);
 begin
-     InptSenha.PasswordChar := '*';
+  InptSenha.PasswordChar := '*';
 end;
 
 end.
+

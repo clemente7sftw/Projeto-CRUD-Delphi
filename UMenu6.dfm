@@ -4195,19 +4195,6 @@ object Form6: TForm6
     Height = 15
     Caption = 'Turmas'
   end
-  object Lista: TStringGrid
-    Left = 359
-    Top = 112
-    Width = 337
-    Height = 281
-    ColCount = 3
-    FixedCols = 0
-    RowCount = 3
-    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing, goFixedRowDefAlign]
-    TabOrder = 0
-    OnEnter = ListaEnter
-    OnKeyDown = ListaKeyDown
-  end
   object Menu: TPanel
     Left = 0
     Top = -32
@@ -4215,10 +4202,10 @@ object Form6: TForm6
     Height = 1093
     Color = clBtnHighlight
     ParentBackground = False
-    TabOrder = 1
+    TabOrder = 0
     object PIncluir: TPanel
       Left = 24
-      Top = 64
+      Top = 133
       Width = 113
       Height = 41
       Caption = 'Incluir'
@@ -4236,7 +4223,7 @@ object Form6: TForm6
     end
     object PExcluir: TPanel
       Left = 24
-      Top = 641
+      Top = 568
       Width = 113
       Height = 41
       Caption = 'Excluir'
@@ -4245,7 +4232,7 @@ object Form6: TForm6
     end
     object PSair: TPanel
       Left = 24
-      Top = 920
+      Top = 792
       Width = 113
       Height = 41
       Caption = 'Sair'
@@ -4253,62 +4240,72 @@ object Form6: TForm6
       OnClick = PSairClick
     end
   end
-  object BtnAdd: TButton
-    Left = 359
-    Top = 406
-    Width = 75
-    Height = 25
-    Caption = 'Adicionar'
-    TabOrder = 2
-  end
-  object BtnConf: TButton
-    Left = 622
-    Top = 406
-    Width = 75
-    Height = 25
-    Caption = 'Confirmar'
-    TabOrder = 3
-    OnClick = BtnConfClick
-  end
-  object Dados: TListBox
-    Left = 359
-    Top = 112
-    Width = 337
-    Height = 280
-    ItemHeight = 15
-    TabOrder = 4
-  end
   object Fundo: TPanel
-    Left = 944
-    Top = 114
+    Left = 408
+    Top = 137
     Width = 225
     Height = 280
     Color = clBtnHighlight
     ParentBackground = False
-    TabOrder = 5
-    object ComboBox2: TComboBox
-      Left = 48
+    TabOrder = 1
+    object CbProfessor: TComboBox
+      Left = 40
       Top = 184
       Width = 145
       Height = 23
       TabOrder = 0
-      Text = 'ComboBox2'
+      Text = 'Professor'
     end
     object BtnCBAdd: TButton
-      Left = 80
+      Left = 72
       Top = 240
       Width = 75
       Height = 25
       Caption = 'Adicionar'
       TabOrder = 1
+      OnClick = BtnCBAddClick
     end
-    object ComboBox1: TComboBox
-      Left = 48
-      Top = 115
+    object CbDisciplinas: TComboBox
+      Left = 40
+      Top = 99
       Width = 145
       Height = 23
       TabOrder = 2
-      Text = 'ComboBox1'
+      Text = 'Disciplinas'
     end
+  end
+  object Lista: TStringGrid
+    Left = 751
+    Top = 152
+    Width = 320
+    Height = 120
+    ColCount = 3
+    RowCount = 2
+    TabOrder = 2
+    OnEnter = ListaEnter
+  end
+  object BtnAdd: TButton
+    Left = 752
+    Top = 456
+    Width = 75
+    Height = 25
+    Caption = 'BtnAdd'
+    TabOrder = 3
+  end
+  object BtnConf: TButton
+    Left = 776
+    Top = 480
+    Width = 75
+    Height = 25
+    Caption = 'BtnConf'
+    TabOrder = 4
+  end
+  object Dados: TListBox
+    Left = 753
+    Top = 448
+    Width = 121
+    Height = 97
+    ItemHeight = 15
+    TabOrder = 5
   end
 end

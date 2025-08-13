@@ -4187,14 +4187,14 @@ object Form2: TForm2
   object Menu: TPanel
     Left = 0
     Top = 0
-    Width = 185
+    Width = 217
     Height = 1061
     Color = clBtnHighlight
     ParentBackground = False
     TabOrder = 0
     object PEstudantes: TPanel
       Left = 24
-      Top = 48
+      Top = 64
       Width = 113
       Height = 41
       Caption = 'Estudantes'
@@ -4230,7 +4230,7 @@ object Form2: TForm2
     end
     object PMatriculas: TPanel
       Left = 24
-      Top = 752
+      Top = 768
       Width = 113
       Height = 41
       Caption = 'Matr'#237'culas'

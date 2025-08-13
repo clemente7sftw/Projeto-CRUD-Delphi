@@ -30,10 +30,8 @@ type
     procedure PListarClick(Sender: TObject);
     procedure BtnConfClick(Sender: TObject);
     procedure EdBuscarChange(Sender: TObject);
-
-
   private
-    var Estudantes:TEstudantes;
+    var Estudantes: TEstudantes;
     procedure AtualizarLista;
   public
   end;
@@ -51,15 +49,11 @@ procedure TForm3.BtnConfClick(Sender: TObject);
 begin
   Estudantes.ConfirmarDados;
   Estudantes.Salvar;
-
 end;
-
-
-
 
 procedure TForm3.EdBuscarChange(Sender: TObject);
 begin
-Estudantes.Buscar(EdBuscar.Text);
+  Estudantes.Buscar(EdBuscar.Text);
 end;
 
 procedure TForm3.FormCreate(Sender: TObject);
@@ -80,7 +74,6 @@ begin
   if Key = VK_RETURN then
   begin
     Key := 0;
-
     if Lista.Row < Lista.RowCount - 1 then
       Lista.Row := Lista.Row + 1
     else
@@ -90,23 +83,19 @@ begin
       Lista.Cells[0, Lista.Row] := IntToStr(2000 + Lista.Row);
       Lista.Cells[1, Lista.Row] := '';
     end;
-
     Lista.Col := 1;
     Lista.SetFocus;
   end;
 end;
 
-
-
 procedure TForm3.PExcluirClick(Sender: TObject);
 begin
- Estudantes.ExcluirAluno;
+  Estudantes.ExcluirAluno;
 end;
 
 procedure TForm3.PIncluirClick(Sender: TObject);
 begin
-
- Estudantes.MostrarIncluir;
+  Estudantes.MostrarIncluir;
 end;
 
 procedure TForm3.PListarClick(Sender: TObject);
@@ -127,3 +116,4 @@ begin
 end;
 
 end.
+

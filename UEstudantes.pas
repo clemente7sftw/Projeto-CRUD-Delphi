@@ -3,7 +3,7 @@
 interface
 
 uses
-  Vcl.Grids, Vcl.StdCtrls,Vcl.Dialogs, Vcl.Controls, UFunçoes, System.Classes, System.SysUtils;
+  Vcl.Grids, Vcl.StdCtrls, Vcl.Dialogs, Vcl.Controls, UFunçoes, System.Classes, System.SysUtils;
 
 type
   TEstudantes = class(TFunçoes)
@@ -24,7 +24,7 @@ type
     procedure Incluir;
     procedure Listar;
     procedure Salvar;
-    function Buscar(const TextoBusca: string): Integer; virtual;
+    function Buscar(const TextoBusca: string): Integer; override;
   end;
 
 implementation
@@ -33,15 +33,13 @@ implementation
 
 constructor TEstudantes.Create(ALista: TStringGrid; ADados: TListBox; ABtnAdd, ABtnConf: TControl; ACodigoInicial: Integer);
 begin
-  inherited Create(ALista, ADados, ABtnAdd, ABtnConf, ACodigoInicial, 'C:\Users\gabri\OneDrive\Documentos\estudantes.txt');
+  inherited Create(ALista, ADados, ABtnAdd, ABtnConf, ACodigoInicial, 'C:\Users\gabi\OneDrive\Documents\estudantes.txt');
 end;
 
 function TEstudantes.ArquivoFullPath: string;
 begin
   Result := Arquivo;
 end;
-
-
 
 function TEstudantes.Buscar(const TextoBusca: string): Integer;
 var
@@ -59,7 +57,7 @@ begin
     begin
       Result := i;
       Dados.ItemIndex := i;
-      // Dados.SetFocus;  <- Remova ou comente esta linha!
+      // Dados.SetFocus;  // Linha comentada para evitar problemas de foco
       Break;
     end;
   end;
@@ -109,9 +107,6 @@ begin
   Lista.Cells[1, 0] := 'Nome';
   Lista.Options := Lista.Options + [goEditing];
 
-  // Ajustar largura das colunas (opcional)
-  Lista.ColWidths[0] := 80;   // largura para código
-  Lista.ColWidths[1] := 200;  // largura para nome
 end;
 
 procedure TEstudantes.Salvar;
@@ -137,7 +132,7 @@ begin
 
       ListaSalvar.SaveToFile(CaminhoArquivo);
 
-      ShowMessage('Arquivo salvo com sucesso ');
+      ShowMessage('Arquivo salvo com sucesso');
     finally
       ListaSalvar.Free;
     end;
@@ -147,17 +142,15 @@ begin
   end;
 end;
 
-
 procedure TEstudantes.SalvarAlunos;
 begin
-Self.ConfirmarDados;
+  ConfirmarDados;
 end;
 
 procedure TEstudantes.AdicionarAluno(const Nome: string);
 var
   novaLinha: Integer;
 begin
-
   FCodigo := Codigo;
   FNome := Nome;
   novaLinha := Lista.RowCount;
@@ -188,20 +181,21 @@ begin
       Lista.RowCount := Lista.RowCount - 1;
     end;
 
-    // Atualiza o arquivo após exclusão
-    Salvar;  // Chama o método que salva o conteúdo da TStringGrid no arquivo
+    Salvar;
   end
   else
     ShowMessage('Selecione um item para deletar.');
 end;
+
 procedure TEstudantes.Incluir;
 begin
-Self.MostrarIncluir;
+  MostrarIncluir;
 end;
 
 procedure TEstudantes.Listar;
 begin
-Self.MostrarListar;
+  MostrarListar;
 end;
 
 end.
+

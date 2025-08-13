@@ -4194,10 +4194,10 @@ object Form7: TForm7
     Caption = 'Matr'#237'culas'
   end
   object Lista: TStringGrid
-    Left = 359
-    Top = 113
+    Left = 743
+    Top = 112
     Width = 337
-    Height = 281
+    Height = 105
     ColCount = 3
     FixedCols = 0
     RowCount = 2
@@ -4234,7 +4234,7 @@ object Form7: TForm7
     end
     object PExcluir: TPanel
       Left = 24
-      Top = 641
+      Top = 431
       Width = 113
       Height = 41
       Caption = 'Excluir'
@@ -4252,16 +4252,16 @@ object Form7: TForm7
     end
   end
   object BtnAdd: TButton
-    Left = 359
-    Top = 409
+    Left = 839
+    Top = 503
     Width = 75
     Height = 25
     Caption = 'Adicionar'
     TabOrder = 2
   end
   object BtnConf: TButton
-    Left = 621
-    Top = 409
+    Left = 839
+    Top = 503
     Width = 75
     Height = 25
     Caption = 'Confirmar'
@@ -4269,28 +4269,28 @@ object Form7: TForm7
     OnClick = BtnConfClick
   end
   object Dados: TListBox
-    Left = 359
-    Top = 112
-    Width = 337
-    Height = 280
+    Left = 839
+    Top = 503
+    Width = 67
+    Height = 35
     ItemHeight = 15
     TabOrder = 4
   end
   object Fundo: TPanel
-    Left = 944
-    Top = 114
+    Left = 432
+    Top = 112
     Width = 225
     Height = 280
     Color = clBtnHighlight
     ParentBackground = False
     TabOrder = 5
-    object ComboBox2: TComboBox
+    object CbEstudante: TComboBox
       Left = 48
       Top = 184
       Width = 145
       Height = 23
       TabOrder = 0
-      Text = 'ComboBox2'
+      Text = 'CbEstudante'
     end
     object BtnCBAdd: TButton
       Left = 80
@@ -4300,13 +4300,13 @@ object Form7: TForm7
       Caption = 'Adicionar'
       TabOrder = 1
     end
-    object ComboBox1: TComboBox
+    object CbTurma: TComboBox
       Left = 48
       Top = 115
       Width = 145
       Height = 23
       TabOrder = 2
-      Text = 'ComboBox1'
+      Text = 'CbTurma'
     end
   end
 end

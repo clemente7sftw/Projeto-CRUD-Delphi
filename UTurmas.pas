@@ -6,6 +6,7 @@ uses
   Vcl.Grids, Vcl.StdCtrls,Vcl.Dialogs, Vcl.Controls, UFunçoes, System.Classes, System.SysUtils;
   Type TTurmas= class(TFunçoes)
   private
+    procedure Excluir;
 
    public
     constructor Create(ALista: TStringGrid; ADados: TListBox; ABtnAdd, ABtnConf: TControl; ACodigoInicial: Integer = 200); reintroduce; overload;
@@ -15,7 +16,7 @@ uses
     procedure Incluir;
     procedure Listar;
     procedure Salvar;
-    procedure Excluir;
+    procedure ExcluirTurma;
   end;
 implementation
 
@@ -33,7 +34,7 @@ var
   linha, codigo, nome: string;
   p: Integer;
 begin
- var CaminhoArquivo := 'C:\Users\gabri\OneDrive\Documentos\turmas.txt';
+ var CaminhoArquivo := 'C:\Users\gabi\OneDrive\Documents\turmas.txt';
   ListaCarregar := TStringList.Create;
   try
     if FileExists(CaminhoArquivo) then
@@ -62,12 +63,17 @@ end;
 constructor TTurmas.Create(ALista: TStringGrid; ADados: TListBox; ABtnAdd,
   ABtnConf: TControl; ACodigoInicial: Integer);
 begin
-   inherited Create(ALista, ADados, ABtnAdd, ABtnConf, ACodigoInicial, 'C:\Users\gabri\OneDrive\Documentos\turmas.txt');
+   inherited Create(ALista, ADados, ABtnAdd, ABtnConf, ACodigoInicial, 'C:\Users\gabi\OneDrive\Documents\turmas.txt');
 end;
 
 procedure TTurmas.Excluir;
 begin
 Self.ExcluirLinha;
+end;
+
+procedure TTurmas.ExcluirTurma;
+begin
+
 end;
 
 procedure TTurmas.Incluir;
@@ -102,7 +108,7 @@ begin
         end;
       end;
 
-      CaminhoArquivo := 'C:\Users\gabri\OneDrive\Documentos\turmas.txt';
+      CaminhoArquivo := 'C:\Users\gabi\OneDrive\Documents\turmas.txt';
       ListaSalvar.SaveToFile(CaminhoArquivo, TEncoding.UTF8);
       ShowMessage('Arquivo salvo com sucesso');
     finally
