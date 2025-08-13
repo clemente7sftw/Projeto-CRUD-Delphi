@@ -4277,8 +4277,8 @@ object Form7: TForm7
     TabOrder = 4
   end
   object Fundo: TPanel
-    Left = 944
-    Top = 114
+    Left = 840
+    Top = 112
     Width = 225
     Height = 280
     Color = clBtnHighlight
