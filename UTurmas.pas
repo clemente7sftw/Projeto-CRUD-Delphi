@@ -34,7 +34,7 @@ var
   linha, codigo, nome: string;
   p: Integer;
 begin
- var CaminhoArquivo := 'C:\Users\gabi\OneDrive\Documents\turmas.txt';
+ var CaminhoArquivo := 'C:\Users\gabri\OneDrive\Documentos\turmas.txt';
   ListaCarregar := TStringList.Create;
   try
     if FileExists(CaminhoArquivo) then
@@ -63,7 +63,7 @@ end;
 constructor TTurmas.Create(ALista: TStringGrid; ADados: TListBox; ABtnAdd,
   ABtnConf: TControl; ACodigoInicial: Integer);
 begin
-   inherited Create(ALista, ADados, ABtnAdd, ABtnConf, ACodigoInicial, 'C:\Users\gabi\OneDrive\Documents\turmas.txt');
+   inherited Create(ALista, ADados, ABtnAdd, ABtnConf, ACodigoInicial, 'C:\Users\gabri\OneDrive\Documentos\turmas.txt');
 end;
 
 procedure TTurmas.Excluir;
@@ -108,7 +108,7 @@ begin
         end;
       end;
 
-      CaminhoArquivo := 'C:\Users\gabi\OneDrive\Documents\turmas.txt';
+      CaminhoArquivo := 'C:\Users\gabri\OneDrive\Documentos\turmas.txt';
       ListaSalvar.SaveToFile(CaminhoArquivo, TEncoding.UTF8);
       ShowMessage('Arquivo salvo com sucesso');
     finally

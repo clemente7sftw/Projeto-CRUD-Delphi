@@ -149,8 +149,9 @@
         </DCCReference>
         <DCCReference Include="UProfessores.pas"/>
         <DCCReference Include="UDisciplinas.pas"/>
-        <DCCReference Include="UTurmas.pas"/>
-        <DCCReference Include="UMatriculas.pas"/>
+        <DCCReference Include="UTurmas.pas">
+            <Form>$R *.res</Form>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

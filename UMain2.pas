@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls,UMenu3,UMenu4,UMenu5,UMenu6,UMenu7, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.Imaging.jpeg;
+  Vcl.Controls,UMenu3,UMenu4,UMenu5,UMenu6, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.Imaging.jpeg;
 
 type
   TForm2 = class(TForm)
@@ -19,7 +19,7 @@ type
     procedure PProfessoresClick(Sender: TObject);
     procedure PDisciplinasClick(Sender: TObject);
     procedure PTurmasClick(Sender: TObject);
-    procedure PMatriculasClick(Sender: TObject);
+
   private
     { Private declarations }
   public
@@ -32,6 +32,7 @@ var
 implementation
 
 {$R *.dfm}
+
 // Estudantes [3]
 // Professores [4]
 // Disciplinas [5]
@@ -51,12 +52,7 @@ begin
     Form3.Show;
 end;
 
-procedure TForm2.PMatriculasClick(Sender: TObject);
-begin
-    Form7 := TForm7.Create(Self);
-    Form7.Align := alClient;
-    Form7.Show;
-end;
+
 
 procedure TForm2.PProfessoresClick(Sender: TObject);
 begin

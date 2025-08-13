@@ -31,7 +31,7 @@ implementation
 
 constructor TDisciplina.Create(ALista: TStringGrid; ADados: TListBox; ABtnAdd, ABtnConf: TControl; ACodigoInicial: Integer);
 begin
-  inherited Create(ALista, ADados, ABtnAdd, ABtnConf, ACodigoInicial, 'C:\Users\gabi\OneDrive\Documents\disciplinas.txt');
+  inherited Create(ALista, ADados, ABtnAdd, ABtnConf, ACodigoInicial, 'C:\Users\gabri\OneDrive\Documentos\disciplinas.txt');
 end;
 
 
@@ -65,7 +65,7 @@ var
   linha, codigo, nome: string;
   CaminhoArquivo: string;
 begin
-  CaminhoArquivo := 'C:\Users\gabi\OneDrive\Documents\disciplinas.txt';
+  CaminhoArquivo := 'C:\Users\gabri\OneDrive\Documentos\disciplinas.txt';
   ListaCarregar := TStringList.Create;
   try
     if FileExists(CaminhoArquivo) then
@@ -148,7 +148,7 @@ begin
           ListaSalvar.Add(codigo + ' - ' + nome);
       end;
 
-      CaminhoArquivo := 'C:\Users\gabi\OneDrive\Documents\disciplinas.txt';
+      CaminhoArquivo := 'C:\Users\gabri\OneDrive\Documentos\disciplinas.txt';
       ListaSalvar.SaveToFile(CaminhoArquivo);
 
       ShowMessage('Arquivo salvo com sucesso');

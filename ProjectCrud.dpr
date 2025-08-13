@@ -10,8 +10,8 @@ uses
   UMenu6 in 'UMenu6.pas' {Form6},
   UProfessores in 'UProfessores.pas',
   UDisciplinas in 'UDisciplinas.pas',
-  UTurmas in 'UTurmas.pas',
-  UMatriculas in 'UMatriculas.pas';
+  UTurmas in 'UTurmas.pas';
+
 
 {$R *.res}
 

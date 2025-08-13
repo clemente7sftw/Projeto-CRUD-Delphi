@@ -141,6 +141,7 @@ begin
   Turmas := TTurmas.Create(Lista, Dados, BtnAdd, BtnConf);
   Turmas.CarregarTurmas;
 
+
   AtualizarComboBox;
 end;
 

@@ -4235,7 +4235,6 @@ object Form2: TForm2
       Height = 41
       Caption = 'Matr'#237'culas'
       TabOrder = 4
-      OnClick = PMatriculasClick
     end
   end
 end

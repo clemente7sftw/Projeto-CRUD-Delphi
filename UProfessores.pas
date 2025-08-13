@@ -65,7 +65,7 @@ var
   linha, codigo, nome, cpf: string;
   CaminhoArquivo: string;
 begin
-  CaminhoArquivo := 'C:\Users\gabi\OneDrive\Documents\professores.txt';
+  CaminhoArquivo := 'C:\Users\gabri\OneDrive\Documentos\professores.txt';
   ListaCarregar := TStringList.Create;
   try
     if FileExists(CaminhoArquivo) then
@@ -106,7 +106,7 @@ end;
 
 constructor TProfessor.Create(ALista: TStringGrid; ADados: TListBox; ABtnAdd, ABtnConf: TControl; ACodigoInicial: Integer);
 begin
-  inherited Create(ALista, ADados, ABtnAdd, ABtnConf, ACodigoInicial, 'C:\Users\gabi\OneDrive\Documents\professores.txt');
+  inherited Create(ALista, ADados, ABtnAdd, ABtnConf, ACodigoInicial, 'C:\Users\gabri\OneDrive\Documentos\professores.txt');
 end;
 
 procedure TProfessor.Excluir;
@@ -173,7 +173,7 @@ begin
       if (codigo <> '') and (nome <> '') then
         ListaSalvar.Add(codigo + ' - ' + nome + ' - ' + cpf);
     end;
-    CaminhoArquivo := 'C:\Users\gabi\OneDrive\Documents\professores.txt';
+    CaminhoArquivo := 'C:\Users\gabri\OneDrive\Documentos\professores.txt';
     ListaSalvar.SaveToFile(CaminhoArquivo, TEncoding.UTF8);
   finally
     ListaSalvar.Free;

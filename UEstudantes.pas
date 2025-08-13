@@ -19,7 +19,6 @@ type
     procedure CarregarAlunos;
     procedure ConfigGrid;
     procedure SalvarAlunos;
-    procedure AdicionarAluno(const Nome: string);
     procedure ExcluirAluno;
     procedure Incluir;
     procedure Listar;
@@ -33,7 +32,7 @@ implementation
 
 constructor TEstudantes.Create(ALista: TStringGrid; ADados: TListBox; ABtnAdd, ABtnConf: TControl; ACodigoInicial: Integer);
 begin
-  inherited Create(ALista, ADados, ABtnAdd, ABtnConf, ACodigoInicial, 'C:\Users\gabi\OneDrive\Documents\estudantes.txt');
+  inherited Create(ALista, ADados, ABtnAdd, ABtnConf, ACodigoInicial, 'C:\Users\gabri\OneDrive\Documentos\estudantes.txt');
 end;
 
 function TEstudantes.ArquivoFullPath: string;
@@ -57,7 +56,7 @@ begin
     begin
       Result := i;
       Dados.ItemIndex := i;
-      // Dados.SetFocus;  // Linha comentada para evitar problemas de foco
+      // Dados.SetFocus;
       Break;
     end;
   end;
@@ -70,7 +69,7 @@ var
   linha, codigo, nome: string;
   CaminhoArquivo: string;
 begin
-  CaminhoArquivo := 'C:\Users\gabi\OneDrive\Documents\estudantes.txt';
+  CaminhoArquivo := 'C:\Users\gabri\OneDrive\Documentos\estudantes.txt';
   ListaCarregar := TStringList.Create;
   try
     try
@@ -128,7 +127,7 @@ begin
           ListaSalvar.Add(codigo + ' - ' + nome);
       end;
 
-      CaminhoArquivo := 'C:\Users\gabi\OneDrive\Documents\estudantes.txt';
+      CaminhoArquivo := 'C:\Users\gabri\OneDrive\Documentos\estudantes.txt';
 
       ListaSalvar.SaveToFile(CaminhoArquivo);
 
@@ -147,19 +146,7 @@ begin
   ConfirmarDados;
 end;
 
-procedure TEstudantes.AdicionarAluno(const Nome: string);
-var
-  novaLinha: Integer;
-begin
-  FCodigo := Codigo;
-  FNome := Nome;
-  novaLinha := Lista.RowCount;
-  Lista.RowCount := novaLinha + 1;
-  Lista.Cells[0, novaLinha] := IntToStr(FCodigo);
-  Lista.Cells[1, novaLinha] := FNome;
 
-  Dados.Items.Add(IntToStr(FCodigo) + ' - ' + FNome);
-end;
 
 procedure TEstudantes.ExcluirAluno;
 var
