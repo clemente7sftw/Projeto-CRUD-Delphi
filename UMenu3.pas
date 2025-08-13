@@ -20,6 +20,7 @@ type
     BtnAdd: TButton;
     BtnConf: TButton;
     Dados: TListBox;
+    EdBuscar: TEdit;
     procedure PSairClick(Sender: TObject);
     procedure ListaEnter(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -28,6 +29,7 @@ type
     procedure PExcluirClick(Sender: TObject);
     procedure PListarClick(Sender: TObject);
     procedure BtnConfClick(Sender: TObject);
+    procedure EdBuscarChange(Sender: TObject);
 
 
   private
@@ -52,10 +54,19 @@ begin
 
 end;
 
+
+
+
+procedure TForm3.EdBuscarChange(Sender: TObject);
+begin
+Estudantes.Buscar(EdBuscar.Text);
+end;
+
 procedure TForm3.FormCreate(Sender: TObject);
 begin
   Estudantes := TEstudantes.Create(Lista, Dados, BtnAdd, BtnConf, 2000);
   Estudantes.CarregarAlunos;
+  EdBuscar.Visible := False;
 end;
 
 procedure TForm3.ListaEnter(Sender: TObject);
@@ -89,7 +100,7 @@ end;
 
 procedure TForm3.PExcluirClick(Sender: TObject);
 begin
- Estudantes.ExcluirLinha;
+ Estudantes.ExcluirAluno;
 end;
 
 procedure TForm3.PIncluirClick(Sender: TObject);
@@ -101,6 +112,7 @@ end;
 procedure TForm3.PListarClick(Sender: TObject);
 begin
   Estudantes.MostrarListar;
+  EdBuscar.Visible := True;
 end;
 
 procedure TForm3.PSairClick(Sender: TObject);

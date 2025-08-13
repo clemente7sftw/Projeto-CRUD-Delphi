@@ -50,6 +50,7 @@ type
     procedure PrepararGrid; virtual;
     procedure MostrarIncluir; virtual;
     procedure MostrarListar; virtual;
+    function Buscar(const TextoBusca: string): Integer; virtual;
 
     procedure ValidarCPF; virtual;
     procedure TratarEnterParaNovaLinha(Key: Word); virtual;
@@ -138,7 +139,27 @@ begin
   MostrarListar;
 end;
 
+function TFunçoes.Buscar;
+var
+  i: Integer;
+  TextoMinusculo, ItemMinusculo: string;
+begin
+  Result := -1;
+  TextoMinusculo := LowerCase(Trim(TextoBusca));
+  if TextoMinusculo = '' then Exit;
 
+  for i := 0 to FDados.Items.Count - 1 do
+  begin
+    ItemMinusculo := LowerCase(FDados.Items[i]);
+    if Pos(TextoMinusculo, ItemMinusculo) > 0 then
+    begin
+      Result := i;
+      FDados.ItemIndex := i;
+      FDados.SetFocus;
+      Break;
+    end;
+  end;
+end;
 
 procedure TFunçoes.ConfirmarDados;
 var
@@ -176,28 +197,7 @@ end;
 
 
 procedure TFunçoes.ExcluirLinha;
-var
-  DadoUN: Integer;
-  i, j: Integer;
 begin
-  DadoUN := Dados.ItemIndex;
-
-  if DadoUN <> -1 then
-  begin
-
-    Dados.Items.Delete(DadoUN);
-    if (DadoUN + 1) < Lista.RowCount then
-    begin
-
-      for i := DadoUN + 1 to Lista.RowCount - 2 do
-        for j := 0 to Lista.ColCount - 1 do
-          Lista.Cells[j, i] := Lista.Cells[j, i + 1];
-
-      Lista.RowCount := Lista.RowCount - 1;
-    end;
-  end
-  else
-    ShowMessage('Selecione um item para deletar.');
 end;
 
 procedure TFunçoes.PrepararGrid;
@@ -219,6 +219,7 @@ begin
   Dados.Visible := True;
   BtnAdd.Visible := False;
   BtnConf.Visible := False;
+
 end;
 
 procedure TFunçoes.TratarEnterParaNovaLinha(Key: Word);
