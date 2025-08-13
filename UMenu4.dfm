@@ -4218,7 +4218,7 @@ object Form4: TForm4
     TabOrder = 1
     object PIncluir: TPanel
       Left = 24
-      Top = 64
+      Top = 133
       Width = 113
       Height = 41
       Caption = 'Incluir'
@@ -4227,7 +4227,7 @@ object Form4: TForm4
     end
     object PListar: TPanel
       Left = 24
-      Top = 144
+      Top = 352
       Width = 113
       Height = 41
       Caption = 'Listar'
@@ -4236,7 +4236,7 @@ object Form4: TForm4
     end
     object PExcluir: TPanel
       Left = 24
-      Top = 321
+      Top = 568
       Width = 113
       Height = 41
       Caption = 'Excluir'
@@ -4245,7 +4245,7 @@ object Form4: TForm4
     end
     object PSair: TPanel
       Left = 24
-      Top = 424
+      Top = 792
       Width = 113
       Height = 41
       Caption = 'Sair'
@@ -4277,5 +4277,14 @@ object Form4: TForm4
     Height = 280
     ItemHeight = 15
     TabOrder = 4
+  end
+  object EdBuscar: TEdit
+    Left = 816
+    Top = 118
+    Width = 121
+    Height = 23
+    TabOrder = 5
+    TextHint = 'Buscar'
+    OnChange = EdBuscarChange
   end
 end

@@ -4278,4 +4278,13 @@ object Form3: TForm3
     ItemHeight = 15
     TabOrder = 4
   end
+  object EdBuscar: TEdit
+    Left = 816
+    Top = 118
+    Width = 121
+    Height = 23
+    TabOrder = 5
+    TextHint = 'Buscar'
+    OnChange = EdBuscarChange
+  end
 end

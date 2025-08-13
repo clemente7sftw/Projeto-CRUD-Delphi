@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms,UProfessores, Vcl.Dialogs, Vcl.Imaging.jpeg, Vcl.ExtCtrls,
+  Vcl.Controls, Vcl.Forms, UProfessores, Vcl.Dialogs, Vcl.Imaging.jpeg, Vcl.ExtCtrls,
   Vcl.Grids, Vcl.StdCtrls;
 
 type
@@ -20,6 +20,7 @@ type
     BtnConf: TButton;
     BtnAdd: TButton;
     Dados: TListBox;
+    EdBuscar: TEdit;
     procedure PSairClick(Sender: TObject);
     procedure ListaKeyPress(Sender: TObject; var Key: Char);
     procedure ListaEnter(Sender: TObject);
@@ -29,10 +30,10 @@ type
     procedure PListarClick(Sender: TObject);
     procedure BtnConfClick(Sender: TObject);
     procedure PExcluirClick(Sender: TObject);
+    procedure EdBuscarChange(Sender: TObject);
   private
-   var Professores:TProfessor;
+    var Professores: TProfessor;
   public
-    { Public declarations }
   end;
 
 var
@@ -42,7 +43,8 @@ implementation
 
 {$R *.dfm}
 
-uses UMain2;
+uses
+  UMain2;
 
 procedure TForm4.BtnConfClick(Sender: TObject);
 begin
@@ -50,21 +52,26 @@ begin
   Professores.Salvar;
 end;
 
+procedure TForm4.EdBuscarChange(Sender: TObject);
+begin
+  Professores.Buscar(EdBuscar.Text);
+end;
+
 procedure TForm4.FormCreate(Sender: TObject);
 begin
-Professores := TProfessor.Create(Lista, Dados, BtnAdd, BtnConf);
-Professores.CarregarProfessores;
+  Professores := TProfessor.Create(Lista, Dados, BtnAdd, BtnConf);
+  Professores.CarregarProfessores;
+  EdBuscar.Visible := False;
 end;
 
 procedure TForm4.ListaEnter(Sender: TObject);
 begin
-    Lista.Cells[0,0]:= 'Código';
-    Lista.Cells[1,0]:= 'Nome';
-    Lista.Cells[2,0]:= 'CPF';
+  Lista.Cells[0, 0] := 'Código';
+  Lista.Cells[1, 0] := 'Nome';
+  Lista.Cells[2, 0] := 'CPF';
 end;
 
-procedure TForm4.ListaKeyDown(Sender: TObject; var Key: Word;
-  Shift: TShiftState);
+procedure TForm4.ListaKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
   if Key = VK_RETURN then
   begin
@@ -98,22 +105,24 @@ end;
 
 procedure TForm4.PExcluirClick(Sender: TObject);
 begin
-Professores.ExcluirLinha;
+  Professores.ExcluirProfessores;
 end;
 
 procedure TForm4.PIncluirClick(Sender: TObject);
 begin
-Professores.MostrarIncluir;
+  Professores.MostrarIncluir;
 end;
 
 procedure TForm4.PListarClick(Sender: TObject);
 begin
-Professores.MostrarListar;
+  Professores.MostrarListar;
+  EdBuscar.Visible := True;
 end;
 
 procedure TForm4.PSairClick(Sender: TObject);
 begin
-    Form2.Show;
+  Form2.Show;
 end;
 
 end.
+

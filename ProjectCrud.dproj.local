@@ -12,8 +12,13 @@
     <Transaction>2025/08/06 21:42:33.000.939,C:\Users\gabi\OneDrive\Documents\Projeto Delphi (CRUD)\Unit2.pas=C:\Users\gabi\OneDrive\Documents\Projeto Delphi (CRUD)\UMain2.pas</Transaction>
     <Transaction>2025/08/06 21:42:33.000.939,C:\Users\gabi\OneDrive\Documents\Projeto Delphi (CRUD)\Unit2.dfm=C:\Users\gabi\OneDrive\Documents\Projeto Delphi (CRUD)\UMain2.dfm</Transaction>
     <Transaction>2025/08/06 22:02:34.000.569,=C:\Users\gabi\OneDrive\Documents\Projeto Delphi (CRUD)\Unit3.pas</Transaction>
+<<<<<<< HEAD
     <Transaction>2025/08/06 22:02:45.000.427,C:\Users\gabi\OneDrive\Documents\Projeto Delphi (CRUD)\Unit3.pas=C:\Users\gabi\OneDrive\Documents\Projeto Delphi (CRUD)\UMenu3.pas</Transaction>
     <Transaction>2025/08/06 22:02:45.000.427,C:\Users\gabi\OneDrive\Documents\Projeto Delphi (CRUD)\Unit3.dfm=C:\Users\gabi\OneDrive\Documents\Projeto Delphi (CRUD)\UMenu3.dfm</Transaction>
+=======
+    <Transaction>2025/08/06 22:02:45.000.427,C:\Users\gabi\OneDrive\Documents\Projeto Delphi (CRUD)\Unit3.dfm=C:\Users\gabi\OneDrive\Documents\Projeto Delphi (CRUD)\UMenu3.dfm</Transaction>
+    <Transaction>2025/08/06 22:02:45.000.427,C:\Users\gabi\OneDrive\Documents\Projeto Delphi (CRUD)\Unit3.pas=C:\Users\gabi\OneDrive\Documents\Projeto Delphi (CRUD)\UMenu3.pas</Transaction>
+>>>>>>> 0008145071f299e799f8b723af1950d484a14d4f
     <Transaction>2025/08/06 22:52:00.000.267,=C:\Users\gabi\OneDrive\Documents\Projeto Delphi (CRUD)\Unit4.pas</Transaction>
     <Transaction>2025/08/06 22:52:09.000.127,C:\Users\gabi\OneDrive\Documents\Projeto Delphi (CRUD)\Unit4.pas=C:\Users\gabi\OneDrive\Documents\Projeto Delphi (CRUD)\UMenu4.pas</Transaction>
     <Transaction>2025/08/06 22:52:09.000.127,C:\Users\gabi\OneDrive\Documents\Projeto Delphi (CRUD)\Unit4.dfm=C:\Users\gabi\OneDrive\Documents\Projeto Delphi (CRUD)\UMenu4.dfm</Transaction>
@@ -39,5 +44,10 @@
     <Transaction>2025/08/11 16:55:19.000.788,C:\Users\gabri\OneDrive\Documentos\Projeto-CRUD-Delphi\Unit1.pas=C:\Users\gabri\OneDrive\Documentos\Projeto-CRUD-Delphi\UTurmas.pas</Transaction>
     <Transaction>2025/08/11 17:12:47.000.742,=C:\Users\gabri\OneDrive\Documentos\Projeto-CRUD-Delphi\Unit1.pas</Transaction>
     <Transaction>2025/08/11 17:12:56.000.195,C:\Users\gabri\OneDrive\Documentos\Projeto-CRUD-Delphi\Unit1.pas=C:\Users\gabri\OneDrive\Documentos\Projeto-CRUD-Delphi\UMatriculas.pas</Transaction>
+<<<<<<< HEAD
+=======
+    <Transaction>2025/08/12 21:17:59.000.933,C:\Users\gabi\OneDrive\Documents\Projeto-CRUD-Delphi\UEntidades.pas=</Transaction>
+    <Transaction>2025/08/12 23:52:19.986,C:\Users\gabi\OneDrive\Documents\Projeto-CRUD-Delphi\Umenu7.pas=</Transaction>
+>>>>>>> 0008145071f299e799f8b723af1950d484a14d4f
   </Transactions>
 </BorlandProject>

@@ -4218,7 +4218,7 @@ object Form5: TForm5
     TabOrder = 1
     object PIncluir: TPanel
       Left = 24
-      Top = 64
+      Top = 133
       Width = 113
       Height = 41
       Caption = 'Incluir'
@@ -4236,7 +4236,7 @@ object Form5: TForm5
     end
     object PExcluir: TPanel
       Left = 24
-      Top = 641
+      Top = 568
       Width = 113
       Height = 41
       Caption = 'Excluir'
@@ -4245,20 +4245,12 @@ object Form5: TForm5
     end
     object PSair: TPanel
       Left = 24
-      Top = 920
+      Top = 792
       Width = 113
       Height = 41
       Caption = 'Sair'
       TabOrder = 3
       OnClick = PSairClick
-    end
-    object PAtualizar: TPanel
-      Left = 24
-      Top = 232
-      Width = 113
-      Height = 41
-      Caption = 'Atualizar'
-      TabOrder = 4
     end
   end
   object BtnAdd: TButton
@@ -4285,5 +4277,14 @@ object Form5: TForm5
     Height = 280
     ItemHeight = 15
     TabOrder = 4
+  end
+  object EdBuscar: TEdit
+    Left = 816
+    Top = 118
+    Width = 121
+    Height = 23
+    TabOrder = 5
+    TextHint = 'Buscar'
+    OnChange = EdBuscarChange
   end
 end

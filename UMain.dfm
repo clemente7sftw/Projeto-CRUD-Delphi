@@ -4201,8 +4201,8 @@
     object MsgLogin: TLabel
       Left = 312
       Top = 16
-      Width = 73
-      Height = 53
+      Width = 62
+      Height = 31
       Margins.Left = 100
       Margins.Right = 100
       Margins.Bottom = 400

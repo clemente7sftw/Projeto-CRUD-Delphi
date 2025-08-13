@@ -147,11 +147,6 @@
             <Form>Form6</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Umenu7.pas">
-            <Form>Form7</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="UEntidades.pas"/>
         <DCCReference Include="UProfessores.pas"/>
         <DCCReference Include="UDisciplinas.pas"/>
         <DCCReference Include="UTurmas.pas"/>

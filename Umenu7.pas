@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls,UMatriculas, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Grids,
+  Vcl.Controls, UMatriculas, UEstudantes, UTurmas, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Grids,
   Vcl.Imaging.jpeg;
 
 type
@@ -21,8 +21,6 @@ type
     BtnConf: TButton;
     Dados: TListBox;
     Fundo: TPanel;
-    ComboBox1: TComboBox;
-    ComboBox2: TComboBox;
     BtnCBAdd: TButton;
     procedure PSairClick(Sender: TObject);
     procedure ListaEnter(Sender: TObject);
@@ -33,9 +31,10 @@ type
     procedure BtnConfClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
-    Matriculas:TMatriculas;
+    Matriculas: TMatriculas;
+    Estudantes: TEstudantes;
+    Turmas: TTurmas;
   public
-    { Public declarations }
   end;
 
 var
@@ -45,7 +44,8 @@ implementation
 
 {$R *.dfm}
 
-uses UMain2;
+uses
+  UMain2;
 
 procedure TForm7.BtnConfClick(Sender: TObject);
 begin
@@ -55,19 +55,24 @@ end;
 
 procedure TForm7.FormCreate(Sender: TObject);
 begin
-Matriculas := TMatriculas.Create(Lista, Dados, BtnAdd, BtnConf);
-Matriculas.CarregarMatriculas;
+  Matriculas := TMatriculas.Create(Lista, Dados, BtnAdd, BtnConf);
+  Matriculas.CarregarMatriculas;
+
+  Lista.FixedRows := 1;
+  Lista.RowCount := 2;
+  Lista.Cells[0, 0] := 'Código';
+  Lista.Cells[1, 0] := 'Código Turma';
+  Lista.Cells[2, 0] := 'Código Estudante';
 end;
 
 procedure TForm7.ListaEnter(Sender: TObject);
 begin
-    Lista.Cells[0,0]:= 'Código';
-    Lista.Cells[1,0]:= 'Código Turma';
-    Lista.Cells[2,0]:= 'Código Estudante';
+  Lista.Cells[0, 0] := 'Código';
+  Lista.Cells[1, 0] := 'Código Turma';
+  Lista.Cells[2, 0] := 'Código Estudante';
 end;
 
-procedure TForm7.ListaKeyDown(Sender: TObject; var Key: Word;
-  Shift: TShiftState);
+procedure TForm7.ListaKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
   if Key = VK_RETURN then
   begin
@@ -91,22 +96,23 @@ end;
 
 procedure TForm7.PExcluirClick(Sender: TObject);
 begin
-Matriculas.ExcluirLinha;
+  Matriculas.ExcluirMatricula;
 end;
 
 procedure TForm7.PIncluirClick(Sender: TObject);
 begin
-Matriculas.MostrarIncluir;
+  Matriculas.MostrarIncluir;
 end;
 
 procedure TForm7.PListarClick(Sender: TObject);
 begin
-Matriculas.MostrarListar;
+  Matriculas.MostrarListar;
 end;
 
 procedure TForm7.PSairClick(Sender: TObject);
 begin
-     Form2.Show;
+  Form2.Show;
 end;
 
 end.
+
